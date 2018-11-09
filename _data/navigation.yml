@@ -19,7 +19,7 @@ projectsnav:
   - title: "Computational Neuroscience"
     children:
       - title: "Sim Agent MPI"
-        url: /projects/simagentmpi/
+        url: /projects/simagent/
       - title: "Sim Builder"
         url: /SimBuilder/
         
