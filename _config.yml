@@ -152,7 +152,6 @@ footer:
 include:
   - .htaccess
   - _pages
-  - _pages/projects
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
@@ -274,6 +273,11 @@ compress_html:
   ignore:
     envs: development
 
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:path/
 
 # Defaults
 defaults:
@@ -288,3 +292,15 @@ defaults:
       comments: # true
       share: true
       related: true
+  # _projects
+  - scope:
+      path: "_pages/"
+      type: projects
+    values:
+      layout: single
+      read_time: false
+      author_profile: false
+      share: true
+      comments: false
+      sidebar:
+        nav: "projectsnav"
