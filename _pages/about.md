@@ -12,4 +12,5 @@ defaults:
       author_profile: true
 
 ---
-### Previous work
+
+Tyler is a computer science PhD student at the University of Missouri, where he is currently researching the intersection of machine learning and computational neuroscience.
