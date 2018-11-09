@@ -10,4 +10,6 @@ defaults:
     values:
       sidebar:
         nav: "projectsnav"
+      layout: single
+      author_profile: true
 ---
