@@ -1,6 +1,9 @@
 ---
+title: Project
+layout: category
+permalink: /projects/
 defaults:
-  # _docs
+  # _pages
   - scope:
       path: ""
       type: pages
