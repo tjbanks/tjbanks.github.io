@@ -15,7 +15,7 @@ main:
     - title: "About"
       url: /about/
 
-projects:
+projectsnav:
   - title: Computational Neuroscience
     children:
       - title: "Sim Agent MPI"
