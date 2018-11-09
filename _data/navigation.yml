@@ -14,3 +14,16 @@ main:
       url: /projects/
     - title: "About"
       url: /about/
+
+projects:
+  - title: Computational Neuroscience
+    children:
+      - title: "Sim Agent MPI"
+        url: /SimAgentMPI/
+      - title: "Sim Builder"
+        url: /SimBuilder/
+        
+  - title: Machine Learning
+    children:
+      - title: "Computer Science"
+        url: /about/
