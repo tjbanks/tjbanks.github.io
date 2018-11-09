@@ -1,6 +1,7 @@
 ---
 title: Projects
 permalink: /projects/
+layout: category
 defaults:
   # _pages
   - scope:
