@@ -1,6 +1,5 @@
 ---
-title: Project
-layout: category
+title: Projects
 permalink: /projects/
 defaults:
   # _pages
