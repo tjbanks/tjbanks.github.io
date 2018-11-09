@@ -294,7 +294,7 @@ defaults:
       related: true
   # _projects
   - scope:
-      path: "_pages/"
+      path: ""
       type: projects
     values:
       layout: single
