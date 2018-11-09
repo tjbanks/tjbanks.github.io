@@ -102,7 +102,7 @@ analytics:
 # Site Author
 author:
   name             : "Tyler Banks"
-  avatar           : "/assets/images/Tyler_Banks_Photo.PNG" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/Tyler_Banks_Photo.PNG" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Tyler is a computer science PhD student at the University of Missouri, where he is currently researching the intersection of machine learning and computational neuroscience."
   location         : "Columbia Missouri"
   email            : "tyler@tylerbanks.net"
