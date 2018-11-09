@@ -1,3 +1,3 @@
-#Hello World
+## Hello World
 
-Welcome to tylerbanks.net.
+First post on tylerbanks.net.
