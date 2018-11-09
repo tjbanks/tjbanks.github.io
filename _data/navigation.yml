@@ -28,6 +28,6 @@ projectsnav:
         url: /projects/cnnfold/
   - title: "Computer Science"
     children:
-      - title: "Games/LibGDX"
+      - title: "App Games"
         url: /projects/penguin/
         
