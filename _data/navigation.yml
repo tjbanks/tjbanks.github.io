@@ -21,9 +21,13 @@ projectsnav:
       - title: "Sim Agent MPI"
         url: /projects/simagent/
       - title: "Sim Builder"
-        url: /SimBuilder/
-        
+        url: /projects/simbuilder/   
   - title: "Machine Learning"
     children:
-      - title: "Computer Science"
-        url: /about/
+      - title: "CNN-Fold"
+        url: /projects/cnnfold/
+  - title: "Computer Science"
+    children:
+      - title: "Games/LibGDX"
+        url: /projects/penguin/
+        
