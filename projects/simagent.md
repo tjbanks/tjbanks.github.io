@@ -1,5 +1,5 @@
 ---
-title: SimAgentMPI
+title: Sim Agent
 permalink: /projects/simagent
 defaults:
   - scope:
