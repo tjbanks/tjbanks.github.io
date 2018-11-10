@@ -28,6 +28,8 @@ projectsnav:
     children:
       - title: "CNN-Fold"
         url: /projects/cnnfold/
+      - title: "Osint.tv"
+        url: /projects/osinttv/
   - title: "Computer Science"
     children:
       - title: "App Games"
