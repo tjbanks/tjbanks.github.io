@@ -2,6 +2,8 @@
 title: About
 layout: category
 permalink: /about/
+sidebar:
+  nav: "aboutnav"
 defaults:
   # _pages
   - scope:
