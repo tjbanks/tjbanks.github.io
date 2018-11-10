@@ -34,4 +34,31 @@ projectsnav:
     children:
       - title: "App Games"
         url: /projects/penguin/
+                
+aboutnav:
+    - title: "Education"
+      url: /pages/education/
+    - title: "Professional Experience"
+      url: /pages/experience/
+    - title: "Awards and Distinctions"
+      url: /pages/awards/
+    - title: "Computer Skills"
+      url: /pages/computerskills/
+      
+teachingnav:
+    - title: "Fall 2018"
+      children:
+      - title: "CMP_SC 4970W"
+        url: /teaching/cmpsc4970w/
+    - title: "Summer 2018"
+      children:
+      - title: "ECE 4990"
+        url: /teaching/ece4990/
+    - title: "Fall/Spring 2015"
+      children:
+      - title: "CMP_SC 4980"
+        url: /teaching/cmpsc4980/ 
         
+ece4990nav:
+    - title: "Project 1"
+    - url: /teaching/ece4990/project1
