@@ -3,7 +3,7 @@ title: Teaching
 permalink: /teaching/
 layout: category
 sidebar:
-  nav: "teachingsnav"
+  nav: "teachingnav"
 defaults:
   # _pages
   - scope:
