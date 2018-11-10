@@ -1,7 +1,7 @@
 ---
 title: About - Education
 layout: category
-permalink: /pages/education
+permalink: /pages/education/
 sidebar:
   nav: "aboutnav"
 defaults:
