@@ -278,6 +278,9 @@ collections:
   projects:
     output: true
     permalink: /:collection/:path/
+  teaching:
+    output: true
+    permalink: /:collection/:path/
 
 # Defaults
 defaults:
@@ -304,3 +307,16 @@ defaults:
       comments: false
       sidebar:
         nav: "projectsnav"
+  # _projects
+  - scope:
+      path: ""
+      type: teaching
+    values:
+      layout: single
+      read_time: false
+      author_profile: false
+      share: true
+      comments: false
+      sidebar:
+        nav: "teachingnav"        
+
