@@ -62,7 +62,7 @@ teachingnav:
         url: /teaching/cmpsc4980/ 
         
 ece4990nav:
-    - title: "ECE 4990"
+    - title: "ECE 4990 Home"
       url: /teaching/ece4990/
     - title: "Project 1"
       url: /teaching/ece4990/project1
