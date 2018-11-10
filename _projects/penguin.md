@@ -15,6 +15,12 @@ defaults:
 ---
 
 
-This game was created when app games were the next big thing. It's programmed in Java for the Android system with [LibGDX](https://libgdx.badlogicgames.com/) as the backend.
+The penguin cannon game was created when app games were starting to get popular. It's programmed in Java for the Android system using [LibGDX](https://libgdx.badlogicgames.com/) as the backend.
 
 Source [here](https://bitbucket.org/tjb1991/cannongame/src/master/).
+
+
+![alt text][screenshot]
+
+
+[screenshot]: /assets/penguin.PNG "SimBuilder"
