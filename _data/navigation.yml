@@ -12,9 +12,11 @@ main:
   #   url: /sitemap/
     - title: "Projects"
       url: /projects/
+    - title: "Publications"
+      url: /publications/
     - title: "About"
       url: /about/
-
+    
 projectsnav:
   - title: "Computational Neuroscience"
     children:
