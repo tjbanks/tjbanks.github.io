@@ -319,4 +319,15 @@ defaults:
       comments: false
       sidebar:
         nav: "teachingnav"        
-
+  # _teaching/ece4990
+  - scope:
+      path: "ece4990"
+      type: teaching
+    values:
+      layout: single
+      read_time: false
+      author_profile: false
+      share: true
+      comments: false
+      sidebar:
+        nav: "teachingnav"      
