@@ -35,7 +35,7 @@ projectsnav:
   - title: "Computer Science"
     children:
       - title: "App Games"
-        url: /projects/penguin/
+        url: /projects/appgames/
                 
 aboutnav:
     - title: "Education"
