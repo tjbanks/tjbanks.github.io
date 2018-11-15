@@ -1,6 +1,6 @@
 ---
-title: Penguin Game
-permalink: /projects/penguin/
+title: App Games
+permalink: /projects/appgames/
 layout: category
 sidebar:
   nav: "projectsnav"
