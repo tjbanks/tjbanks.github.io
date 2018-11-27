@@ -13,6 +13,7 @@ defaults:
       layout: single
       author_profile: true
 ---
+<img src="/assets/osint.png">
 
 Osint.tv [[website]](https://osint.tv) is a worldwide situational awareness platform for decision makers operating in a complex, global environment.
 
