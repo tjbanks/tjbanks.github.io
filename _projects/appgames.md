@@ -28,4 +28,4 @@ Source [here](https://bitbucket.org/tjb1991/cannongame/src/master/).
 ![alt text][screenshot]
 
 [screenshot1]: /assets/blox.jpg "BLOX"
-[screenshot]: /assets/penguin.PNG "Penguin"
+[screenshot]: /assets/penguin.jpg "Penguin"
