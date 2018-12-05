@@ -21,4 +21,4 @@ defaults:
 
 2. Latimer B, **Banks T**, Ankathatti A, Calyam P, Nair SS, “Software Automation for Biologically Realistic Neuro Big Data Simulations,” Big Data Neuroscience Workshop: Organized by the Advanced Computational Neuroscience Network (ACNN), Cleveland, OH, Sept 6-7, 2018. [[pdf]](/assets/2018NeuroBigData_poster.pdf)
 
-3. Latimer B, Chen Z, **Banks T**, Ho D, V Kanta Chantzi, D B Headly, D Pare, Nair SS, “Artificial neural networks for prediction of the local field potential” Society for Neuroscience Poster, San Diego, Ca, Nov 7, 2018.
+3. Latimer B, Chen Z, **Banks T**, Ho D, V Kanta Chantzi, D B Headly, D Pare, Nair SS, “Artificial neural networks for prediction of the local field potential” Society for Neuroscience Poster, San Diego, Ca, Nov 7, 2018. [[pdf]](/assets/2018SFN_LFP_Prediction.pdf)
