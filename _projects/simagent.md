@@ -15,7 +15,7 @@ defaults:
 ---
 ![alt text][screenshot]
 
-**_Youtube videos_** (1) https://www.youtube.com/watch?v=rg8AE97FH0I (2) https://www.youtube.com/watch?v=_AsOgrTj7TE
+**_Youtube videos_** [[Part 1]](https://www.youtube.com/watch?v=rg8AE97FH0I) [[Part 2]](https://www.youtube.com/watch?v=_AsOgrTj7TE)
 
 **_SimAgent_** directly interfaces the user's laptop with [NSG](https://www.nsgportal.org/index.html) resources to run [NEURON](https://www.neuron.yale.edu/neuron/)-based network simulations. SimAgent has two core functions, automated job submission and parameter sweep. The automated job submission feature is a point and click interface that accepts any neuron or python program directory, submits the program to run remotely and watches it until completion with live updates to the user. The parameter sweep feature allows the same functionality with the added ability to specify sections of code to automatically change with each run. Users can specify a range of values for a parameter to take on, run each simulation in a parallel configuration and determine the optimal output for their needs. It currently supports connections to the [NSG-R](https://www.nsgportal.org/guide.html) restful API and connections using SSH to servers running [Slurm](https://slurm.schedmd.com/).
 
