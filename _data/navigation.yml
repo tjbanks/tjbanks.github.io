@@ -26,6 +26,8 @@ projectsnav:
         url: /projects/simagent/
       - title: "Sim Builder"
         url: /projects/simbuilder/   
+      - title: "CompNeuro Virtual Machine"
+        url: /projects/neurovm/ 
   - title: "Machine Learning"
     children:
       - title: "CNN-Fold"
