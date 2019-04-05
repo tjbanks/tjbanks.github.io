@@ -15,4 +15,4 @@ defaults:
 ---
 Download a pre-built virtual machine with all the tools you need to run large scale NEURON simulations.
 
-Instructions can be found [here](../assets/CompNeuroVMInstructions.pdf).
+Instructions can be found [here](/assets/CompNeuroVMInstructions.pdf).
