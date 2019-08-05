@@ -23,4 +23,4 @@ defaults:
 
 1. **Banks T**, Wang J, Samarth P, Kick D, Schulz DJ, Nair SS, "Structure of large cells in crab cardiac ganglion - a computational study" Society for Neuroscience Poster, San Diego, Ca, Nov 5, 2018. [[pdf]](/assets/2018SFN_Banks.pdf)
 
-1. Latimer B, **Banks T**, Ankathatti A, Calyam P, Nair SS, "Software Automation for Biologically Realistic Neuro Big Data Simulations," Big Data Neuroscience Workshop: Organized by the Advanced Computational Neuroscience Network (ACNN), Cleveland, OH, Sept 6-7, 2018. [[pdf]](/assets/2018NeuroBigData_poster.pdf)
+1. Latimer B, **Banks T**, Feng F, Ankathatti A, Calyam P, Nair SS, "Software Automation for Biologically Realistic Neuro Big Data Simulations," Big Data Neuroscience Workshop: Organized by the Advanced Computational Neuroscience Network (ACNN), Cleveland, OH, Sept 6-7, 2018. [[pdf]](/assets/2018NeuroBigData_poster.pdf)
