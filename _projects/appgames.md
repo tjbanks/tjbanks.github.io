@@ -22,7 +22,6 @@ The blox game was prototyped over a weekend just for fun. Download the APK [here
 # Penguin
 The penguin cannon game was created when app games were starting to get popular. It's programmed in Java for the Android system using [LibGDX](https://libgdx.badlogicgames.com/) as the backend.
 
-Source [here](https://bitbucket.org/tjb1991/cannongame/src/master/).
 
 <img src="/assets/penguin.jpg" width="270" height="480">
 
