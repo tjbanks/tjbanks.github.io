@@ -28,6 +28,8 @@ projectsnav:
         url: /projects/simbuilder/   
       - title: "CompNeuro Virtual Machine"
         url: /projects/neurovm/ 
+      - title: "NeuroLab (Online)"
+        url: /projects/neurolab/ 
       - title: "BMTool"
         url: /projects/bmtool/ 
   - title: "Machine Learning"
