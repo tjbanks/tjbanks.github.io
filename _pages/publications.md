@@ -17,13 +17,13 @@ defaults:
 
 ## Presentations
 
-1. **Banks T**, Guntu V, Hummos A, Nair SS, *"Resonant and synchronizing mechanisms in a hippocampal theta model"*, JNS 2020, July 2020 [[pdf]](assets/-965511648-2.pdf)
+1. **Banks T**, Guntu V, Hummos A, Nair SS, *"Resonant and synchronizing mechanisms in a hippocampal theta model"*, JNS 2020, July 2020 [[pdf]](/assets/-965511648-2.pdf)
 
 1. *"A Computational Neuroscience Introduction with Hippocampal Research"*, July 2020 [[YouTube link]](https://www.youtube.com/watch?v=XLrbyPIody4)
 
 ## Posters
 
-1. **Banks T**, Tuna T, Canfield P, Unal G, Nair SS *"Model of the Generation of the Amygdala Theta Rhythm"* IEEE NER 2021, May 2021 [[pdf]](assets/2021_IEEE_NER_Poster_Final.pdf)
+1. **Banks T**, Tuna T, Canfield P, Unal G, Nair SS *"Model of the Generation of the Amygdala Theta Rhythm"* IEEE NER 2021, May 2021 [[pdf]](/assets/2021_IEEE_NER_Poster_Final.pdf)
 
 1. Wei Q, **Banks T**, Latimer B, Chen Z, Nair SS *"Automating development of biophysical single cell models,"* Society for Neuroscience Poster, Chicago, IL, Oct 22, 2019. [[pdf]](/assets/sfn2019/2019_SFN_Automation_Poster.pdf)
 
