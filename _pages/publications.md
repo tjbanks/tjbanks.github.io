@@ -17,7 +17,9 @@ defaults:
 
 ## Presentations
 
-1. A Computational Neuroscience Introduction with Hippocampal Research [[link]](https://www.youtube.com/watch?v=XLrbyPIody4)
+1. **Banks T**, Guntu V, Hummos A, Nair SS, *"Resonant and synchronizing mechanisms in a hippocampal theta model"*, JNS 2020, July 2020 [[pdf]](assets/-965511648-2.pdf)
+
+1. *"A Computational Neuroscience Introduction with Hippocampal Research"*, July 2020 [[YouTube link]](https://www.youtube.com/watch?v=XLrbyPIody4)
 
 ## Posters
 
