@@ -13,7 +13,7 @@ defaults:
 ---
 ## Papers
 
-1. **Banks T**, Tuna T, Canfield P, Unal G, Nair SS *"Model of the Generation of the Amygdala Theta Rhythm"* IEEE NER 2021 , May 2021 [[pdf]](NER_2021_AMYGDALA_PAPER.pdf) (**Conference paper**)
+1. **Banks T**, Tuna T, Canfield P, Unal G, Nair SS *"Model of the Generation of the Amygdala Theta Rhythm"* IEEE NER 2021 , May 2021 [[pdf]](/assets/NER_2021_AMYGDALA_PAPER.pdf) (**Conference paper**)
 
 1. **Banks T** *"CNN-Fold: Protein Fold Recognition by Deep Convolutional Neural Networks"*, Unpublished, University of Missouri, Columbia, Missouri, May 2016 [[pdf]](/assets/Master_Report_Banks_Tyler_final_with_committee.pdf) [[ppt]](/assets/CNN-Fold-Banks-Tyler-Defense_wd_correct.pdf)
 
