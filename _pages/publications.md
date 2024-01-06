@@ -17,7 +17,7 @@ defaults:
 
 1. **Banks T**, Omelyusik V, Nair S, “Pipeline for Biophysical Modeling of a Large Class of Neurons” Manuscript fully drafted, 2024
 
-1. **Banks T** “Neural Modeling Case Studies at Biophysical, Machine Learning, and Automation Levels” University of Missouri Dissertation [[pdf]](assets/Tyler%20Banks%20Dissertation%2012-19-23.pdf)
+1. **Banks T** “Neural Modeling Case Studies at Biophysical, Machine Learning, and Automation Levels” University of Missouri Dissertation [[pdf]](/assets/Tyler%20Banks%20Dissertation%2012-19-23.pdf)
 
 1. Banks T, Scherrer J, Tung T, Uhlmann J, Nair SS (2023) Predicting opioid use disorder 	before and after the opioid prescribing peak in the United States: a machine learning tool using electronic healthcare records, Health Informatics Journal [[open access link]](https://doi.org/10.1177/14604582231168826)
 
