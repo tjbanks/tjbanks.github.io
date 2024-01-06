@@ -13,6 +13,6 @@ defaults:
 
 ---
 
-Tyler is a computer science PhD candidate at the University of Missouri, where he is currently researching the intersection of machine learning and computational neuroscience.
+Tyler is a PhD researcher interested in the intersection of machine learning and computational neuroscience.
 
 Download my CV [here](/assets/Tyler_Banks_CV_Latest.pdf).
