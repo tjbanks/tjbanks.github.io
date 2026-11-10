@@ -9,7 +9,7 @@
  * Exits non-zero if the port has drifted from the reference.
  */
 "use strict";
-const { createCell } = require("../assets/neuron.js");
+const { createCell, meanFiringRate } = require("../assets/neuron.js");
 
 const REF = {
   vRest: -70.0,          // mV
@@ -81,5 +81,15 @@ REF.fiAmps.forEach((amp, i) => {
     `${ok ? "ok  " : "FAIL"} ${amp.toFixed(1)} nA   port ${mean.toFixed(1).padStart(6)}  (${Math.min(...counts)}-${Math.max(...counts)})   NEURON ${String(want).padStart(4)}`
   );
 });
+
+// The rate shown beside the sliders comes from meanFiringRate. With the rhythm
+// off it should land on the same F-I curve.
+console.log("\nRate readout with the rhythm off (steady current)");
+[[0.2, 18], [0.5, 102], [1.0, 170]].forEach(([amp, want]) => {
+  check(`readout at ${amp.toFixed(1)} nA`, meanFiringRate({ bias: amp, amplitude: 0.3, hz: 0 }), want, Math.max(6, want * 0.05), "spikes/s");
+});
+const started = Date.now();
+const dflt = meanFiringRate({ bias: 0.15, amplitude: 0.3, hz: 8 });
+console.log(`\nDefault page settings (0.15 nA + 0.3 nA sine at 8 Hz): ${dflt.toFixed(1)} spikes/s, computed in ${Date.now() - started} ms`);
 
 process.exit(failed ? 1 : 0);

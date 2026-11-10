@@ -764,7 +764,7 @@ main {
 .trace-controls {
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.7rem 1.5rem;
+  gap: 0.7rem 1.1rem;
 }
 .dial {
   display: inline-flex;
