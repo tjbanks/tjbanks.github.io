@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Earlier projects | Tyler J. Banks</title>
+  <meta name="description" content="Older projects by Tyler J. Banks in computational neuroscience, machine learning and computer science, kept for reference.">
+  <link rel="canonical" href="https://tylerbanks.net/projects/">
+  <meta name="theme-color" content="#f7f6fb" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#14122a" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to projects</a>
+
+  <header class="site-nav">
+    <div class="wrap">
+      <a class="nav-home" href="/">Tyler Banks</a>
+      <nav class="nav-links" aria-label="Site">
+        <a href="/">Résumé</a>
+        <a href="/#publications">Publications</a>
+        <a href="/assets/Tyler_Banks_CV_Latest.pdf">CV (PDF)</a>
+      </nav>
+      <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch to dark theme">Dark</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      <div class="page-head">
+        <h1>Earlier projects</h1>
+        <p>Tools and experiments from graduate school and before, kept here because papers, posters and course pages still link to them. Some outside links may have gone stale. Current work is on the <a href="/">résumé</a>.</p>
+      </div>
+
+      <section class="section" aria-labelledby="h-neuro">
+        <h2 id="h-neuro">Computational neuroscience</h2>
+        <div>
+          <article class="entry plain" id="bmtool">
+            <div class="entry-body">
+              <h3>BMTool</h3>
+              <p>An all-in-one Python package that makes it easier to develop model neural networks in <a href="https://github.com/AllenInstitute/bmtk">BMTK</a> and <a href="https://neuron.yale.edu/">NEURON</a>. Install it with <code>pip install bmtool</code>.</p>
+              <p class="pub-links"><a href="https://github.com/tjbanks/bmtools">Source on GitHub</a> <a href="https://pypi.org/project/bmtool/">PyPI</a> <a href="/assets/BMTool-User-Guide.pdf">User guide (PDF)</a></p>
+              <div class="shots"><img src="/assets/bmtool.png" width="1520" height="890" loading="lazy" alt="BMTool plotting the positions of cells in a network model as a 3D scatter plot."></div>
+            </div>
+          </article>
+
+          <article class="entry plain" id="simagent">
+            <div class="entry-body">
+              <h3>SimAgent</h3>
+              <p>Connects a laptop directly to <a href="https://www.nsgportal.org/index.html">Neuroscience Gateway</a> resources to run <a href="https://www.neuron.yale.edu/neuron/">NEURON</a> network simulations. It has two core functions. Automated job submission is a point-and-click interface that takes any NEURON or Python program directory, submits it to run remotely, and watches it to completion with live updates. Parameter sweep does the same while changing marked sections of code on each run, so you can give a parameter a range of values, run the simulations in parallel, and pick the best output. It supports the <a href="https://www.nsgportal.org/guide.html">NSG-R</a> REST API and SSH connections to servers running <a href="https://slurm.schedmd.com/">Slurm</a>.</p>
+              <p class="pub-links"><a href="https://tylerbanks.net/SimAgentMPI">Source and Windows executable</a> <a href="https://www.youtube.com/watch?v=ZaqqbNzprAY">Video, part 1</a> <a href="https://www.youtube.com/watch?v=_AsOgrTj7TE">Video, part 2</a> <a href="http://cyneuro.org/system/analytics/training_content">On CyNeuro.org</a></p>
+              <div class="shots"><img src="https://tylerbanks.net/SimAgentMPI/index_files/image005.jpg" loading="lazy" alt="The SimAgent desktop application."></div>
+            </div>
+          </article>
+
+          <article class="entry plain" id="simbuilder">
+            <div class="entry-body">
+              <h3>SimBuilder</h3>
+              <p>A desktop application for building large-scale networks in NEURON. It uses Marianne J. Bezaire’s <a href="https://github.com/mbezaire/ca1">CA1 model</a> as a backend and generalizes the process so users can specify their own network requirements.</p>
+              <p class="pub-links"><a href="https://tylerbanks.net/SimBuilder/">Source and Windows executable</a> <a href="http://cyneuro.org/system/analytics/training_content">On CyNeuro.org</a></p>
+              <div class="shots"><img src="https://tylerbanks.net/SimBuilder/index_files/image003.jpg" loading="lazy" alt="The SimBuilder desktop application."></div>
+            </div>
+          </article>
+
+          <article class="entry plain" id="neurolab">
+            <div class="entry-body">
+              <h3>NeuroLab</h3>
+              <p>Computational neuroscience and machine learning tools served online through a Docker-based virtual desktop, with nothing to download.</p>
+              <p class="pub-links"><a href="/assets/NeuroLabUsage.pdf">Instructions (PDF)</a></p>
+            </div>
+          </article>
+
+          <article class="entry plain" id="neurovm">
+            <div class="entry-body">
+              <h3>CompNeuro virtual machine</h3>
+              <p>A pre-built virtual machine with all the tools needed to run large-scale NEURON simulations. It needs about 30 GB of free disk space.</p>
+              <p class="pub-links"><a href="/assets/CompNeuroVMInstructions.pdf">Instructions (PDF)</a></p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="h-ml">
+        <h2 id="h-ml">Machine learning</h2>
+        <div>
+          <article class="entry plain" id="cnnfold">
+            <div class="entry-body">
+              <h3>CNN-Fold</h3>
+              <p>For my master’s thesis project I applied convolutional neural networks to protein fold recognition, under the direction of <a href="http://calla.rnet.missouri.edu/cheng/">Dr. Jianlin Cheng</a>. The program implements a convolutional network in DL4J on a one-dimensional dataset provided by Dr. Cheng.</p>
+              <p class="pub-links"><a href="https://bitbucket.org/tjb1991/cnn-fold/src/master/">Source on Bitbucket</a> <a href="http://iris.rnet.missouri.edu/dnfold/">Training and test sets</a> <a href="/assets/Master_Report_Banks_Tyler_final_with_committee.pdf">Report (PDF)</a></p>
+            </div>
+          </article>
+
+          <article class="entry plain" id="osinttv">
+            <div class="entry-body">
+              <h3>osint.tv</h3>
+              <p>A worldwide situational awareness platform for decision makers operating in a complex, global environment. Built with Python, a Flask API, Flower, Neo4j graph databases, natural language processing (NLTK, spaCy), NumPy, pandas, scikit-learn and Keras.</p>
+              <p class="pub-links"><a href="https://osint.tv">osint.tv</a></p>
+              <div class="shots"><img src="/assets/osint.png" width="1033" height="401" loading="lazy" alt="The osint.tv interface."></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="h-cs">
+        <h2 id="h-cs">Computer science</h2>
+        <div>
+          <article class="entry plain" id="datascinotes">
+            <div class="entry-body">
+              <h3>Data science notes</h3>
+              <p>Notes from several books on general Python and data science, written as Jupyter notebooks.</p>
+              <p class="pub-links"><a href="https://nbviewer.jupyter.org/github/tjbanks/python-datasci/tree/master/">Read the notebooks</a> <a href="https://github.com/tjbanks/python-datasci">Source on GitHub</a></p>
+            </div>
+          </article>
+
+          <article class="entry plain" id="appgames">
+            <div class="entry-body">
+              <h3>App games</h3>
+              <p>Android prototypes, mostly built for fun. Blox was prototyped over a weekend (<a href="/assets/Blox-proto5.apk">download the APK</a>). Penguin is a cannon game written in Java with <a href="https://libgdx.badlogicgames.com/">LibGDX</a>, from when app games were first getting popular. Crates is a 3D box-popping game with particle effects. The Mega Man Legends wallpaper is a moving Android wallpaper based on the title screen of the original PlayStation game. Cosmic Blazer is a platformer written from scratch, one of my earliest programming projects.</p>
+              <div class="shots phones">
+                <img src="/assets/blox.jpg" width="1080" height="1920" loading="lazy" alt="Blox.">
+                <img src="/assets/penguin.jpg" width="1080" height="1920" loading="lazy" alt="Penguin.">
+                <img src="/assets/crates.jpg" width="1080" height="1920" loading="lazy" alt="Crates.">
+                <img src="/assets/megaman.jpg" width="1080" height="1920" loading="lazy" alt="Mega Man Legends wallpaper.">
+                <img src="/assets/blazer.jpg" width="1080" height="1920" loading="lazy" alt="Cosmic Blazer.">
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2026 Tyler J. Banks</p>
+      <ul>
+        <li><a href="mailto:tyler@tylerbanks.net">Email</a></li>
+        <li><a href="https://github.com/tjbanks">GitHub</a></li>
+        <li><a href="/">Résumé</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="/assets/site.js" defer></script>
+</body>
+</html>
