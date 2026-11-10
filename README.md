@@ -25,6 +25,11 @@ straight from `main`. There is no build step and no theme (`.nojekyll` turns Jek
 - **New publication:** add an `<article class="entry pub">` block at the top of the right group
   in the Publications section.
 
+- **Timeline:** each bar is one `<a class="tl-bar">` line in the Timeline section of `index.html`.
+  Its `grid-column` is `(start year - 2008) / (end year - 2007)`, and `grid-row` picks the line it
+  sits on. The chart ends at 2026: in a new year, raise `--tl-years` by one, add a `tl-year` cell,
+  and extend the bars that are still running.
+
 ## Preview
 
 ```

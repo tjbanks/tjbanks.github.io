@@ -753,3 +753,222 @@ main {
     display: none;
   }
 }
+
+/* ------------------------------------------------------ neuron controls */
+
+.trace figcaption {
+  display: grid;
+  gap: 0.9rem;
+  justify-content: stretch;
+}
+.trace-controls {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem 1.5rem;
+}
+.dial {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.dial input {
+  width: 8.5rem;
+  margin: 0;
+  accent-color: var(--eosin);
+}
+.dial output {
+  min-width: 4.4em;
+  color: var(--ink-soft);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+.trace-controls .trace-rate {
+  margin-right: auto;
+  font-size: 0.875rem;
+}
+.trace-rate output {
+  display: inline-block;
+  min-width: 1.9em;
+  text-align: right;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------- timeline */
+
+/* Chart fills are stepped separately from the text colours: the dark theme's
+   link violet and pink are too light to use as solid marks. */
+:root {
+  --chart-bar: #4a3aa7;
+  --chart-mark: #d6336c;
+  --chart-on-bar: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --chart-bar: #8c7ee8;
+    --chart-mark: #e85890;
+    --chart-on-bar: #14122a;
+  }
+}
+:root[data-theme="dark"] {
+  --chart-bar: #8c7ee8;
+  --chart-mark: #e85890;
+  --chart-on-bar: #14122a;
+}
+
+.tl {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--tl-years), minmax(0, 1fr));
+  grid-auto-rows: minmax(1.5rem, auto);
+  row-gap: 3px;
+  touch-action: pan-y;
+}
+.tl-lane {
+  grid-column: 1 / -1;
+  justify-self: start;
+  position: relative;
+  z-index: 1;
+  padding-right: 0.5rem;
+  background: var(--paper); /* masks the year hairlines behind the label */
+  padding-top: 0.55rem;
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+  line-height: 1.5rem;
+}
+.tl-lane:first-child {
+  padding-top: 0;
+}
+.tl-bar,
+.tl-degree {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  font-size: 0.78rem;
+  line-height: 1;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.tl-bar {
+  margin-inline: 1px;
+  padding: 0 0.45rem;
+  background: var(--chart-bar);
+  color: var(--chart-on-bar);
+  font-weight: 550;
+  border-radius: 4px;
+}
+.tl-bar span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.tl-bar.tl-short {
+  padding: 0 0.3rem;
+}
+.tl-degree {
+  gap: 0.4rem;
+  color: var(--ink);
+  font-weight: 600;
+}
+.tl-degree::before {
+  content: "";
+  flex: none;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-left: calc(25% - 0.3rem); /* centred in the degree's own year */
+  background: var(--chart-mark);
+  transform: rotate(45deg);
+}
+.tl-bar:hover,
+.tl-degree:hover {
+  text-decoration: underline;
+}
+.tl.has-year .tl-bar:not(.is-active),
+.tl.has-year .tl-degree:not(.is-active) {
+  opacity: 0.25;
+}
+.tl-year {
+  padding-top: 0.35rem;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.tl-year.is-major::before {
+  /* a hairline up the chart at every fifth year */
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 1.4rem;
+  width: 1px;
+  background: var(--rule);
+}
+.tl-cursor {
+  z-index: 0;
+  background: color-mix(in srgb, var(--chart-mark) 15%, transparent);
+  border-radius: 3px;
+  pointer-events: none;
+}
+.tl-readout {
+  max-width: 46em;
+  min-height: 4.6em;
+  margin-top: 0.9rem;
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+}
+.tl-readout b {
+  margin-right: 0.35em;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Arriving at an entry from the timeline: a brief wash so the eye finds it. */
+.entry:target {
+  animation: entry-arrive 1.8s ease-out;
+}
+@keyframes entry-arrive {
+  from {
+    background: color-mix(in srgb, var(--chart-mark) 16%, transparent);
+    box-shadow: 0 0 0 0.6rem color-mix(in srgb, var(--chart-mark) 16%, transparent);
+  }
+  to {
+    background: transparent;
+    box-shadow: 0 0 0 0.6rem transparent;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .entry:target {
+    animation: none;
+  }
+  .tl-bar,
+  .tl-degree {
+    transition: none;
+  }
+}
+@media (max-width: 36rem) {
+  .tl-bar {
+    padding: 0 0.25rem;
+    font-size: 0.6875rem;
+  }
+  .tl-short span {
+    display: none;
+  }
+  .tl-readout {
+    min-height: 8em;
+  }
+  .dial input {
+    width: 7rem;
+  }
+}
+@media print {
+  #timeline {
+    display: none;
+  }
+}

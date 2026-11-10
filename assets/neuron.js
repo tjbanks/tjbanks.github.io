@@ -145,15 +145,23 @@
   var canvas = document.getElementById("trace");
   if (!canvas || !canvas.getContext) return;
   var ctx = canvas.getContext("2d");
-  var injectBtn = document.getElementById("trace-inject");
+  var currentInput = document.getElementById("trace-current");
+  var currentOut = document.getElementById("trace-current-out");
+  var thetaInput = document.getElementById("trace-theta");
+  var thetaOut = document.getElementById("trace-theta-out");
+  var rateOut = document.getElementById("trace-rate");
+  var listenBtn = document.getElementById("trace-listen");
   var pauseBtn = document.getElementById("trace-pause");
   var reducedMotion = root.matchMedia("(prefers-reduced-motion: reduce)");
 
   var DT = 0.025;           // ms
   var SAMPLE_MS = 0.25;     // ms between stored samples
   var STEPS_PER_SAMPLE = Math.round(SAMPLE_MS / DT);
-  var THETA_HZ = 8;         // the basal forebrain input frequency in the model
-  var BIAS = 0.15, THETA_AMP = 0.3, INJECT = 0.4; // nA at the soma
+  // Current at the soma, in nA: a steady level plus a sine at the theta rhythm.
+  // 8 Hz is the basal forebrain input frequency in the model. Pressing and
+  // holding the trace adds HOLD_BOOST on top.
+  var bias = 0.15, thetaHz = 8;
+  var THETA_AMP = 0.3, HOLD_BOOST = 0.3;
 
   // Small seeded generator so the picture does not depend on Math.random.
   var seed = (Date.now() & 0x7fffffff) || 1;
@@ -163,18 +171,44 @@
   }
 
   var cell = createCell({ dt: DT, random: rand });
-  var t = 0, injecting = false, injectLevel = 0;
+  var t = 0, phase = 0, holding = false, boostLevel = 0;
+  var spikeTimes = [], aboveThreshold = false, onSpike = null;
 
   function stepSample() {
     var I = 0, v = 0;
     for (var i = 0; i < STEPS_PER_SAMPLE; i++) {
-      // Ease the extra current in and out over a few milliseconds.
-      injectLevel += ((injecting ? INJECT : 0) - injectLevel) * (DT / 3);
-      I = BIAS + THETA_AMP * Math.sin((2 * PI * THETA_HZ * t) / 1000) + injectLevel;
+      // Ease the held boost in and out over a few milliseconds.
+      boostLevel += ((holding ? HOLD_BOOST : 0) - boostLevel) * (DT / 3);
+      // Accumulate phase so changing the rhythm never makes the sine jump.
+      phase += (2 * PI * thetaHz * DT) / 1000;
+      if (phase > 2 * PI) phase -= 2 * PI;
+      I = bias + THETA_AMP * Math.sin(phase) + boostLevel;
       v = cell.step(I);
       t += DT;
+      // A spike is the soma crossing 0 mV on the way up.
+      if (v > 0 && !aboveThreshold) {
+        aboveThreshold = true;
+        spikeTimes.push(t);
+        if (onSpike) onSpike();
+      } else if (v < -20) {
+        aboveThreshold = false;
+      }
     }
     push(v, I);
+  }
+
+  // Firing rate over the last few whole theta cycles (at least 375 ms), so the
+  // number does not wobble with where in the cycle the window happens to end.
+  function firingRate() {
+    var period = 1000 / thetaHz;
+    var windowMs = Math.ceil(375 / period) * period;
+    while (spikeTimes.length && spikeTimes[0] < t - 2000) spikeTimes.shift();
+    var n = 0;
+    for (var i = spikeTimes.length - 1; i >= 0 && spikeTimes[i] > t - windowMs; i--) n++;
+    return (n * 1000) / windowMs;
+  }
+  function showRate() {
+    if (rateOut) rateOut.textContent = String(Math.round(firingRate()));
   }
 
   // --- sample buffer (ring) ----------------------------------------------
@@ -236,8 +270,8 @@
 
     // Voltage occupies the upper part, the injected current a strip below it.
     var vTop = H * 0.06, vBottom = H * 0.70;
-    var iTop = H * 0.80, iBottom = H * 0.95;
-    var V_MAX = 45, V_MIN = -85, I_MAX = 0.9, I_MIN = -0.25;
+    var iTop = H * 0.78, iBottom = H * 0.97;
+    var V_MAX = 45, V_MIN = -85, I_MAX = 1.2, I_MIN = -0.4;
     function yV(v) { return vTop + ((V_MAX - v) / (V_MAX - V_MIN)) * (vBottom - vTop); }
     function yI(i) { return iTop + ((I_MAX - i) / (I_MAX - I_MIN)) * (iBottom - iTop); }
     var dx = SAMPLE_MS * PX_PER_MS;
@@ -314,6 +348,7 @@
 
   // --- loop ----------------------------------------------------------------
   var running = false, userPaused = false, visible = true, raf = 0, last = 0, carry = 0;
+  var rateShownAt = 0;
 
   function frame(now) {
     raf = 0;
@@ -323,8 +358,20 @@
     carry += (elapsed / 1000) * MS_PER_SECOND / SAMPLE_MS;
     var steps = Math.floor(carry);
     carry -= steps;
-    for (var i = 0; i < steps; i++) stepSample();
+    // While listening, each spike in this frame becomes a click, placed within
+    // the frame at the moment it happened.
+    var clickBase = listening && audio ? audio.currentTime + 0.03 : -1;
+    var index = 0;
+    onSpike = clickBase < 0 ? null : function () {
+      playClick(clickBase + (index / steps) * (elapsed / 1000));
+    };
+    for (index = 0; index < steps; index++) stepSample();
+    onSpike = null;
     draw();
+    if (now - rateShownAt > 250) {
+      rateShownAt = now;
+      showRate();
+    }
     raf = requestAnimationFrame(frame);
   }
   function sync() {
@@ -340,21 +387,76 @@
     }
   }
 
-  function setInjecting(on) {
-    injecting = on;
-    if (injectBtn) injectBtn.setAttribute("aria-pressed", on ? "true" : "false");
-    // With no animation running, show the effect as a fresh still sweep.
-    if (!running) {
-      fill();
-      draw();
-    }
+  // With no animation running (paused, or reduced motion), a change shows up as
+  // a fresh still sweep.
+  function refreshIfStill() {
+    if (running) return;
+    fill();
+    draw();
+    showRate();
   }
 
-  if (injectBtn) {
-    injectBtn.addEventListener("click", function () { setInjecting(!injecting); });
+  // --- controls --------------------------------------------------------------
+  function readControls() {
+    if (currentInput) {
+      bias = parseFloat(currentInput.value);
+      if (currentOut) currentOut.textContent = bias.toFixed(2).replace("-", "−") + " nA";
+    }
+    if (thetaInput) {
+      thetaHz = parseFloat(thetaInput.value);
+      if (thetaOut) thetaOut.textContent = thetaHz + " Hz";
+    }
   }
+  [currentInput, thetaInput].forEach(function (input) {
+    if (!input) return;
+    input.addEventListener("input", function () {
+      readControls();
+      refreshIfStill();
+    });
+  });
+  readControls();
+
+  // --- sound -------------------------------------------------------------------
+  // An audio monitor, as on a recording rig: every spike is a short click.
+  var audio = null, clickBuffer = null, clickGain = null, listening = false;
+
+  function startAudio() {
+    var AudioCtx = root.AudioContext || root.webkitAudioContext;
+    if (!AudioCtx) return false;
+    if (!audio) {
+      audio = new AudioCtx();
+      var rate = audio.sampleRate, length = Math.round(rate * 0.006);
+      clickBuffer = audio.createBuffer(1, length, rate);
+      var data = clickBuffer.getChannelData(0);
+      for (var i = 0; i < length; i++) {
+        var s = i / rate;
+        data[i] = Math.sin(2 * PI * 950 * s) * Math.exp(-s / 0.0011);
+      }
+      clickGain = audio.createGain();
+      clickGain.gain.value = 0.35;
+      clickGain.connect(audio.destination);
+    }
+    if (audio.state === "suspended") audio.resume();
+    return true;
+  }
+  function playClick(when) {
+    var source = audio.createBufferSource();
+    source.buffer = clickBuffer;
+    source.connect(clickGain);
+    source.start(when);
+  }
+  if (listenBtn) {
+    if (!(root.AudioContext || root.webkitAudioContext)) listenBtn.hidden = true;
+    listenBtn.addEventListener("click", function () {
+      listening = !listening && startAudio();
+      listenBtn.setAttribute("aria-pressed", listening ? "true" : "false");
+      listenBtn.textContent = listening ? "Mute" : "Listen";
+    });
+  }
+
   if (pauseBtn) {
     if (reducedMotion.matches) pauseBtn.hidden = true;
+    if (reducedMotion.matches && listenBtn) listenBtn.hidden = true;
     pauseBtn.addEventListener("click", function () {
       userPaused = !userPaused;
       pauseBtn.setAttribute("aria-pressed", userPaused ? "true" : "false");
@@ -363,17 +465,16 @@
     });
   }
 
-  // Press and hold on the trace itself injects for as long as it is held.
-  var heldByPointer = false;
+  // Press and hold on the trace itself for a burst: extra current while held.
   canvas.addEventListener("pointerdown", function (e) {
-    if (e.button !== 0 || injecting) return;
-    heldByPointer = true;
-    setInjecting(true);
+    if (e.button !== 0) return;
+    holding = true;
+    refreshIfStill();
   });
   function release() {
-    if (!heldByPointer) return;
-    heldByPointer = false;
-    setInjecting(false);
+    if (!holding) return;
+    holding = false;
+    refreshIfStill();
   }
   root.addEventListener("pointerup", release);
   root.addEventListener("pointercancel", release);
@@ -388,6 +489,7 @@
   if (reducedMotion.addEventListener) {
     reducedMotion.addEventListener("change", function () {
       if (pauseBtn) pauseBtn.hidden = reducedMotion.matches;
+      if (listenBtn) listenBtn.hidden = reducedMotion.matches;
       sync();
     });
   }
@@ -402,5 +504,6 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
 
   resize();
+  showRate();
   sync();
 })(typeof window !== "undefined" ? window : this);
