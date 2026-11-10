@@ -1,4 +1,559 @@
----
-layout: home
-author_profile: true
----
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tyler J. Banks, PhD | Machine learning engineer</title>
+  <meta name="description" content="Résumé of Tyler J. Banks, PhD: machine learning engineer at Techcyte, computational neuroscientist, and former cybersecurity analyst. Experience, research, teaching and publications.">
+  <link rel="canonical" href="https://tylerbanks.net/">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Tyler J. Banks, PhD">
+  <meta property="og:description" content="Machine learning engineer at Techcyte. PhD in computational neuroscience. Experience, research, teaching and publications.">
+  <meta property="og:url" content="https://tylerbanks.net/">
+  <meta name="theme-color" content="#f7f6fb" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#14122a" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/stix-two-text-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="/assets/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Tyler J. Banks",
+    "honorificSuffix": "PhD",
+    "url": "https://tylerbanks.net/",
+    "email": "mailto:tyler@tylerbanks.net",
+    "jobTitle": "Machine Learning Engineer",
+    "worksFor": { "@type": "Organization", "name": "Techcyte" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "University of Missouri" },
+      { "@type": "CollegeOrUniversity", "name": "University of Texas at San Antonio" }
+    ],
+    "knowsAbout": ["Machine learning", "Computational neuroscience", "Software engineering", "Cybersecurity"],
+    "sameAs": ["https://github.com/tjbanks"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to résumé</a>
+
+  <header class="site-nav">
+    <div class="wrap">
+      <a class="nav-home" href="#top">Tyler Banks</a>
+      <nav class="nav-links" aria-label="Résumé sections">
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#research">Research</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#publications">Publications</a>
+        <a href="#skills">Skills</a>
+      </nav>
+      <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch to dark theme">Dark</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="hero" id="top">
+      <div class="wrap">
+        <h1>Tyler J. Banks</h1>
+        <p class="lede">I’m a machine learning engineer at Techcyte, where I build the pipelines that train and deploy AI models for digital pathology. My expertise spans machine learning, computational neuroscience, software engineering, infrastructure automation and cybersecurity, backed by a PhD in computer science.</p>
+        <div class="actions">
+          <a class="button" href="/assets/Tyler_Banks_CV_Latest.pdf">Download CV (PDF)</a>
+          <a href="mailto:tyler@tylerbanks.net">tyler@tylerbanks.net</a>
+          <a href="https://github.com/tjbanks">github.com/tjbanks</a>
+        </div>
+      </div>
+
+      <figure class="trace">
+        <canvas id="trace" role="img" aria-label="Simulated membrane voltage of a fast-spiking interneuron firing a burst of spikes on each cycle of an 8 hertz rhythm, with the injected current drawn beneath it. The controls below change the current and the rhythm."></canvas>
+        <figcaption class="wrap">
+          <p>The fast-spiking interneuron from my <a href="https://github.com/tjbanks/AmygdalaTheta">amygdala theta model</a>, simulated in your browser as you read. Its input is a current that rises and falls at 8 Hz, the theta frequency of the basal forebrain input in that model. Change the current or the rhythm, or press and hold the trace for a burst.</p>
+          <div class="trace-controls">
+            <label class="dial"><span>Current</span><input type="range" id="trace-current" min="-0.1" max="0.6" step="0.01" value="0.15"><output id="trace-current-out" for="trace-current">0.15 nA</output></label>
+            <label class="dial"><span>Rhythm</span><input type="range" id="trace-theta" min="4" max="12" step="0.5" value="8"><output id="trace-theta-out" for="trace-theta">8 Hz</output></label>
+            <p class="trace-rate"><output id="trace-rate" for="trace-current trace-theta">0</output> spikes per second</p>
+            <button type="button" id="trace-listen" aria-pressed="false">Listen</button>
+            <button type="button" id="trace-pause" aria-pressed="false">Pause</button>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="wrap">
+
+      <section class="section" id="experience" aria-labelledby="h-experience">
+        <h2 id="h-experience">Experience</h2>
+        <div>
+          <p class="section-note">More than a decade working full-time in computing, across software engineering, artificial intelligence, DevOps infrastructure, cybersecurity and academia.</p>
+
+          <article class="entry" id="job-techcyte">
+            <p class="entry-when">2022 – present</p>
+            <div class="entry-body">
+              <h3>Machine Learning Engineer</h3>
+              <p class="entry-where"><b>Techcyte</b>, Orem, UT</p>
+              <p>Machine learning pipeline teams. Joined as Software Engineer, Senior Software Engineer from 2024, Machine Learning Engineer from 2026.</p>
+              <ul class="points">
+                <li>Developed an end-to-end Docker-based AI model deployment service that lets customers securely create and deploy their own models to the Techcyte platform.</li>
+                <li>Researched and implemented a new Mask R-CNN image segmentation software stack.</li>
+                <li>Trained several new image classification models: mitosis detection, an improved mold classifier, and general tissue segmentation.</li>
+                <li>Collaborated with Mayo Clinic research groups to develop models operating on Techcyte data.</li>
+                <li>Led AWS-based deployment of new software stacks, major architecture changes, and web applications, including a client-side DICOM de-identification app and AWS Lambda bridges to third-party AI.</li>
+              </ul>
+              <figure class="slide" id="slide">
+                <div class="slide-frame" role="img" aria-label="Two pieces of stained tissue on a slide, each traced by an outline, with a second outline around a hole inside the larger piece.">
+                  <div class="slide-tissue"></div>
+                  <svg class="slide-outline" viewBox="0 0 830 812" aria-hidden="true" focusable="false"><use href="/assets/tissue-outline.svg#outline"/></svg>
+                </div>
+                <figcaption>From my tissue segmentation work: the outline is the model finding the tissue on a whole-slide image, including the gap inside the larger piece. <button type="button" class="link-button" id="slide-replay" hidden>Trace it again</button></figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="entry" id="job-vuca">
+            <p class="entry-when">2018 – 2025</p>
+            <div class="entry-body">
+              <h3>Co-Founder and CTO</h3>
+              <p class="entry-where"><b>VUCA Inc.</b>, Bethesda, MD, makers of <a href="https://thinktankcalendar.com">thinktankcalendar.com</a></p>
+              <ul class="points">
+                <li>Developed several modular, Docker-based, API microservice infrastructures, and handled all aspects of web development, data collection, processing and presentation.</li>
+                <li>Designed and built an infrastructure for serverless collection of web information using AWS Lambda, Elasticsearch, SQL, automated testing, and GitLab CI/CD.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="entry" id="job-city">
+            <p class="entry-when">2017 – 2022</p>
+            <div class="entry-body">
+              <h3>Cyber Security Analyst</h3>
+              <p class="entry-where"><b>City of Columbia</b>, Columbia, MO</p>
+              <ul class="points">
+                <li>Developed web-based vulnerability reporting systems that reduced network vulnerabilities by more than 90% over the course of one year.</li>
+                <li>Established and managed a multi-year security training curriculum for more than 1,400 City employees: yearly mandatory web-based training, phishing campaigns, and weekly citywide cybersecurity updates.</li>
+                <li>Wrote citywide cybersecurity policy, procedures, and incident response plans that put the City of Columbia ahead of its peers on industry metrics.</li>
+                <li>Built security information and event management (SIEM) on the ELK stack; UNIX system management and automation, PowerShell and UNIX scripting, PKI and cryptography.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="entry" id="job-shelter">
+            <p class="entry-when">2015 – 2017</p>
+            <div class="entry-body">
+              <h3>Software Developer II</h3>
+              <p class="entry-where"><b>Shelter Insurance</b>, Columbia, MO</p>
+              <ul class="points">
+                <li>Scrum team work on interdepartmental programming projects in Java, HTML, PHP, JavaScript, SQL, jQuery, REST, Spring Boot and Git.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="entry" id="job-pnnl">
+            <p class="entry-when">2012</p>
+            <div class="entry-body">
+              <h3>Cyber Security Intern</h3>
+              <p class="entry-where"><b>Pacific Northwest National Laboratory</b>, Richland, WA</p>
+              <ul class="points">
+                <li>Identified web-based attacks on the laboratory network, developed scripts, and documented policy.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="entry" id="job-lackland">
+            <p class="entry-when">2009 – 2011</p>
+            <div class="entry-body">
+              <h3>Computer and Media Technician</h3>
+              <p class="entry-where"><b>Lackland Independent School District</b>, San Antonio, TX</p>
+              <ul class="points">
+                <li>Supported staff, developed the student ID system, and maintained technology infrastructure.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="education" aria-labelledby="h-education">
+        <h2 id="h-education">Education</h2>
+        <div>
+          <article class="entry" id="edu-phd">
+            <p class="entry-when">2023</p>
+            <div class="entry-body">
+              <h3>PhD, Computer Science</h3>
+              <p class="entry-where"><b>University of Missouri</b>, Columbia, MO</p>
+              <p>Computational neuroscience and machine learning. Dissertation: <a href="/assets/Tyler%20Banks%20Dissertation%2012-19-23.pdf">Neural Modeling Case Studies at Biophysical, Machine Learning, and Automation Levels</a> (PDF). Advisor: Dr. Satish Nair, Neural Engineering Lab.</p>
+            </div>
+          </article>
+
+          <article class="entry" id="edu-ms">
+            <p class="entry-when">2016</p>
+            <div class="entry-body">
+              <h3>Master of Computer Science</h3>
+              <p class="entry-where"><b>University of Missouri</b>, Columbia, MO</p>
+              <p>Thesis project: <a href="/assets/Master_Report_Banks_Tyler_final_with_committee.pdf">CNN-Fold: Protein Fold Recognition by Deep Convolutional Neural Networks</a> (PDF). Advisor: Dr. Jianlin Cheng, Bioinformatics, Data Mining and Machine Learning Lab.</p>
+            </div>
+          </article>
+
+          <article class="entry" id="edu-bba">
+            <p class="entry-when">2013</p>
+            <div class="entry-body">
+              <h3>BBA, Infrastructure Assurance (Cyber Security)</h3>
+              <p class="entry-where"><b>University of Texas at San Antonio</b>, San Antonio, TX</p>
+              <p>Minor in Computer Science. Advisor: Dr. Nicole Beebe. Final two years financed by a $50,000 NSF Scholarship for Service grant, awarded 2011.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="research" aria-labelledby="h-research">
+        <h2 id="h-research">Research</h2>
+        <div>
+          <p class="section-note">Work at the intersection of machine learning and neuroscience.</p>
+
+          <article class="entry" id="res-lab">
+            <p class="entry-when">2017 – 2023</p>
+            <div class="entry-body">
+              <h3>Researcher, Neural Engineering Laboratory</h3>
+              <p class="entry-where"><b>University of Missouri</b>, Columbia, MO</p>
+              <ul class="points">
+                <li>Worked with a team of PhD researchers analyzing biologically realistic neural networks: single-cell models of the crustacean cardiac ganglion, hippocampal theta models, amygdala models of more than 27,000 cells, micturition, and LFP prediction using machine learning.</li>
+                <li>Designed <a href="/projects/#simagent">SimAgent</a>, <a href="/projects/#bmtool">BMTool</a> and <a href="/projects/#simbuilder">SimBuilder</a>, Python programs that streamlined designing and running large-scale neural simulations on supercomputers.</li>
+                <li>Mentored undergraduate seniors on capstone projects such as automated parameter selection in small networks and automated rejection sampling.</li>
+                <li>Listed contributor to the Allen Institute’s <a href="https://github.com/AllenInstitute/bmtk">Brain Modeling Toolkit (BMTK)</a>.</li>
+                <li>Maintained the <a href="https://cyneuro.org/">CyNeuro.org</a> website.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="entry" id="res-va">
+            <p class="entry-when">2018 – 2023</p>
+            <div class="entry-body">
+              <h3>WOC Affiliate Researcher, Veterans Health Administration</h3>
+              <p class="entry-where"><b>Harry S. Truman Memorial Veterans’ Hospital</b>, Columbia, MO</p>
+              <ul class="points">
+                <li>Data scientist: deep neural network, random forest, and linear regression modeling.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="entry" id="res-utsa">
+            <p class="entry-when">2011 – 2013</p>
+            <div class="entry-body">
+              <h3>Research Assistant</h3>
+              <p class="entry-where"><b>University of Texas at San Antonio</b>, San Antonio, TX</p>
+              <ul class="points">
+                <li>Developed offsite malware analysis facilities to study the statistical prevalence of malicious code.</li>
+                <li>Wrote custom software and scripts in Bash and Python for a government client.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="teaching" aria-labelledby="h-teaching">
+        <h2 id="h-teaching">Teaching</h2>
+        <div>
+          <p class="section-note">Many years of designing curriculum, building new teaching tools, grading, overseeing labs, and lecturing.</p>
+
+          <article class="entry" id="teach-ucm">
+            <p class="entry-when">2022 – 2025</p>
+            <div class="entry-body">
+              <h3>Adjunct, Computer Science</h3>
+              <p class="entry-where"><b>University of Central Missouri</b>, Warrensburg, MO</p>
+              <ul class="points">
+                <li>CS 4700: Artificial Intelligence (<a href="https://ucm-cs4700.github.io/">course site</a>).</li>
+                <li>CS 4150: Object Oriented Programming and Data Structures.</li>
+                <li>Developed curriculum and lectured to incoming graduate students from diverse academic backgrounds.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="entry" id="teach-capstone">
+            <p class="entry-when">2018 – 2023</p>
+            <div class="entry-body">
+              <h3>Teaching Assistant, Senior Capstone Design I and II</h3>
+              <p class="entry-where"><b>University of Missouri</b>, Columbia, MO</p>
+              <ul class="points">
+                <li>CMP_SC 4970W and 4980W. Helped design prototype senior projects and gave feedback on essays.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="entry" id="teach-neural">
+            <p class="entry-when">2020</p>
+            <div class="entry-body">
+              <h3>Teaching Assistant, Neural Models and Machine Learning</h3>
+              <p class="entry-where"><b>University of Missouri</b>, Columbia, MO</p>
+              <ul class="points">
+                <li>CMP_SC 7580/4580. Developed curriculum for machine learning and pipeline automation tasks.</li>
+                <li>Led a team of developers and designed an original Docker-based cyberinfrastructure that gives students access to all the software their course needs.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="entry" id="teach-ece">
+            <p class="entry-when">Summer 2018</p>
+            <div class="entry-body">
+              <h3>Teaching Assistant, Honors Research in Computational Neuroscience</h3>
+              <p class="entry-where"><b>University of Missouri</b>, Columbia, MO</p>
+              <ul class="points">
+                <li>ECE 4995, 13 students. A lecturing position; helped develop the curriculum on Hodgkin–Huxley theory.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="entry" id="teach-se">
+            <p class="entry-when">2016</p>
+            <div class="entry-body">
+              <h3>Teaching Assistant, Software Engineering</h3>
+              <p class="entry-where"><b>University of Missouri</b>, Columbia, MO</p>
+              <ul class="points">
+                <li>CMP_SC 4320, more than 50 students. Supervised and assisted 14 team programming projects run with Scrum.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="entry" id="teach-utsa">
+            <p class="entry-when">2012 – 2013</p>
+            <div class="entry-body">
+              <h3>Undergraduate Teaching Assistant, Java I and II</h3>
+              <p class="entry-where"><b>University of Texas at San Antonio</b>, San Antonio, TX</p>
+              <ul class="points">
+                <li>Instructional aid for student programming homework and projects.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="publications" aria-labelledby="h-publications">
+        <h2 id="h-publications">Publications</h2>
+        <div>
+          <div class="pubs-group">
+            <h3>Papers and theses</h3>
+
+            <article class="entry pub">
+              <p class="entry-when">2025</p>
+              <div class="entry-body">
+                <p class="pub-title">Basal forebrain innervation of the amygdala: an anatomical and computational exploration</p>
+                <p class="pub-authors">Tuna T*, <b>Banks T</b>*, Glickert G, Sevinc C, Nair S, Unal G</p>
+                <p class="pub-venue"><i>Brain Structure and Function</i> 230, 30</p>
+                <p class="pub-links"><a href="https://link.springer.com/article/10.1007/s00429-024-02886-1">Open access article</a></p>
+              </div>
+            </article>
+
+            <article class="entry pub">
+              <p class="entry-when">2024</p>
+              <div class="entry-body">
+                <p class="pub-title">On Scaling Neuronal Network Simulations Using Distributed Computing</p>
+                <p class="pub-authors">Omelyusik V, Shehzad K, <b>Banks T</b>, Rao P, Nair S</p>
+                <p class="pub-venue"><i>SC24-W: Workshops of the International Conference for High Performance Computing, Networking, Storage and Analysis</i>, Atlanta, GA, pp. 745–749</p>
+                <p class="pub-links"><a href="https://ieeexplore.ieee.org/document/10820640">Paper on IEEE Xplore</a> <a href="https://delaat.net/sc/sc24/indis/pdf/5.1-112-ws_indis112-Vladimir-Omelyusik.pdf">Slides (PDF)</a></p>
+              </div>
+            </article>
+
+            <article class="entry pub">
+              <p class="entry-when">2023</p>
+              <div class="entry-body">
+                <p class="pub-title">Neural Modeling Case Studies at Biophysical, Machine Learning, and Automation Levels</p>
+                <p class="pub-authors"><b>Banks T</b></p>
+                <p class="pub-venue">PhD dissertation, University of Missouri</p>
+                <p class="pub-links"><a href="/assets/Tyler%20Banks%20Dissertation%2012-19-23.pdf">Dissertation (PDF)</a></p>
+              </div>
+            </article>
+
+            <article class="entry pub">
+              <p class="entry-when">2023</p>
+              <div class="entry-body">
+                <p class="pub-title">Predicting opioid use disorder before and after the opioid prescribing peak in the United States: a machine learning tool using electronic healthcare records</p>
+                <p class="pub-authors"><b>Banks T</b>, Scherrer J, Tung T, Uhlmann J, Nair SS</p>
+                <p class="pub-venue"><i>Health Informatics Journal</i></p>
+                <p class="pub-links"><a href="https://doi.org/10.1177/14604582231168826">Open access article</a></p>
+              </div>
+            </article>
+
+            <article class="entry pub">
+              <p class="entry-when">Drafted</p>
+              <div class="entry-body">
+                <p class="pub-title">Pipeline for Biophysical Modeling of a Large Class of Neurons</p>
+                <p class="pub-authors"><b>Banks T</b>, Omelyusik V, Nair S</p>
+                <p class="pub-venue">Manuscript fully drafted</p>
+              </div>
+            </article>
+
+            <article class="entry pub">
+              <p class="entry-when">2021</p>
+              <div class="entry-body">
+                <p class="pub-title">Model of the Generation of the Amygdala Theta Rhythm</p>
+                <p class="pub-authors"><b>Banks T</b>*, Tuna T*, Canfield P, Unal G, Nair SS</p>
+                <p class="pub-venue"><i>IEEE EMBS Conference on Neural Engineering (NER ’21)</i>, May 4–6</p>
+                <p class="pub-links"><a href="/assets/NER_2021_AMYGDALA_PAPER.pdf">Paper (PDF)</a> <a href="/assets/2021_IEEE_NER_Poster_Final.pdf">Poster (PDF)</a></p>
+              </div>
+            </article>
+
+            <article class="entry pub">
+              <p class="entry-when">2021</p>
+              <div class="entry-body">
+                <p class="pub-title">An Efficient Pipeline for Biophysical Modeling of Neurons</p>
+                <p class="pub-authors">Opsal N, Canfield P, <b>Banks T</b>, Nair S</p>
+                <p class="pub-venue"><i>IEEE EMBS Conference on Neural Engineering (NER ’21)</i>, May 4–6</p>
+              </div>
+            </article>
+
+            <article class="entry pub">
+              <p class="entry-when">2016</p>
+              <div class="entry-body">
+                <p class="pub-title">CNN-Fold: Protein Fold Recognition by Deep Convolutional Neural Networks</p>
+                <p class="pub-authors"><b>Banks T</b></p>
+                <p class="pub-venue">Unpublished master’s thesis project, University of Missouri</p>
+                <p class="pub-links"><a href="/assets/Master_Report_Banks_Tyler_final_with_committee.pdf">Report (PDF)</a> <a href="/assets/CNN-Fold-Banks-Tyler-Defense_wd_correct.pdf">Defense slides (PDF)</a></p>
+              </div>
+            </article>
+
+            <p class="footnote">* Equal contribution.</p>
+          </div>
+
+          <div class="pubs-group">
+            <h3>Posters and talks</h3>
+
+            <article class="entry pub">
+              <p class="entry-when">2020</p>
+              <div class="entry-body">
+                <p class="pub-title">Resonant and synchronizing mechanisms in a hippocampal theta model</p>
+                <p class="pub-authors"><b>Banks T</b>, Guntu V, Hummos AM, Nair S</p>
+                <p class="pub-venue">Japan Neuroscience Society presentation and poster, Kobe, Japan, July 31</p>
+                <p class="pub-links"><a href="/assets/-965511648-2.pdf">Poster (PDF)</a> <a href="https://www.youtube.com/watch?v=XLrbyPIody4">Talk on YouTube</a></p>
+              </div>
+            </article>
+
+            <article class="entry pub">
+              <p class="entry-when">2019</p>
+              <div class="entry-body">
+                <p class="pub-title">Automating development of biophysical single cell models</p>
+                <p class="pub-authors">Wei Q, <b>Banks T</b>, Latimer B, Chen Z, Nair S</p>
+                <p class="pub-venue">Society for Neuroscience poster, Chicago, IL, October 21</p>
+                <p class="pub-links"><a href="/assets/sfn2019/2019_SFN_Wei_Poster.pdf">Poster (PDF)</a></p>
+              </div>
+            </article>
+
+            <article class="entry pub">
+              <p class="entry-when">2019</p>
+              <div class="entry-body">
+                <p class="pub-title">Software automation for research and training in neural engineering</p>
+                <p class="pub-authors">Nair S, <b>Banks T</b>, Latimer B, Chen Z, Lyu Z, Chen Z, Dopp D, Fotoohighiam A, Calyam P, Joshi T, Xu D</p>
+                <p class="pub-venue">Society for Neuroscience poster, Chicago, IL, October 21</p>
+                <p class="pub-links"><a href="/assets/sfn2019/2019_SFN_Automation_Poster.pdf">Poster (PDF)</a></p>
+              </div>
+            </article>
+
+            <article class="entry pub">
+              <p class="entry-when">2019</p>
+              <div class="entry-body">
+                <p class="pub-title">Characterizing resonant and synchronizing mechanisms in a hippocampal theta model</p>
+                <p class="pub-authors"><b>Banks T</b>, Guntu V, Hummos AM, Nair S</p>
+                <p class="pub-venue">Society for Neuroscience poster, Chicago, IL, October 20</p>
+                <p class="pub-links"><a href="/assets/sfn2019/2019_SFN_Hipp_Poster.pdf">Poster (PDF)</a></p>
+              </div>
+            </article>
+
+            <article class="entry pub">
+              <p class="entry-when">2019</p>
+              <div class="entry-body">
+                <p class="pub-title">Detailed biologically realistic model of a crustacean cardiac ganglion network</p>
+                <p class="pub-authors">Dopp D, <b>Banks T</b>, Samarth P, Kick D, Schulz D, Nair S</p>
+                <p class="pub-venue">Society for Neuroscience poster, Chicago, IL, October 20</p>
+              </div>
+            </article>
+
+            <article class="entry pub">
+              <p class="entry-when">2019</p>
+              <div class="entry-body">
+                <p class="pub-title">Computational modeling of the neural circuit of rodent lower urinary tract</p>
+                <p class="pub-authors">Latimer B, <b>Banks T</b>, Gahl M, Guntu V, Schulz D, Nair S</p>
+                <p class="pub-venue">Society for Neuroscience poster, Chicago, IL, October 19</p>
+                <p class="pub-links"><a href="/assets/sfn2019/2019_SFN_LUT_Poster.pdf">Poster (PDF)</a></p>
+              </div>
+            </article>
+
+            <article class="entry pub">
+              <p class="entry-when">2018</p>
+              <div class="entry-body">
+                <p class="pub-title">Artificial neural networks for prediction of the local field potential</p>
+                <p class="pub-authors">Latimer B, Chen Z, <b>Banks T</b>, Ho D, Kanta V, Headley DB, Paré D, Nair SS</p>
+                <p class="pub-venue">Society for Neuroscience poster, San Diego, CA, November 7</p>
+                <p class="pub-links"><a href="/assets/2018SFN_LFP_Prediction.pdf">Poster (PDF)</a></p>
+              </div>
+            </article>
+
+            <article class="entry pub">
+              <p class="entry-when">2018</p>
+              <div class="entry-body">
+                <p class="pub-title">Structure of large cells in crab cardiac ganglion: a computational study</p>
+                <p class="pub-authors"><b>Banks T</b>, Wang J, Samarth P, Kick D, Schulz DJ, Nair SS</p>
+                <p class="pub-venue">Society for Neuroscience poster, San Diego, CA, November 5</p>
+                <p class="pub-links"><a href="/assets/2018SFN_Banks.pdf">Poster (PDF)</a></p>
+              </div>
+            </article>
+
+            <article class="entry pub">
+              <p class="entry-when">2018</p>
+              <div class="entry-body">
+                <p class="pub-title">Software automation for biologically realistic neuro big data simulations</p>
+                <p class="pub-authors">Latimer B, <b>Banks T</b>, Feng F, Ankathatti A, Calyam P, Nair SS</p>
+                <p class="pub-venue">Big Data Neuroscience Workshop, Advanced Computational Neuroscience Network (ACNN), Cleveland, OH, September 6–7</p>
+                <p class="pub-links"><a href="/assets/2018NeuroBigData_poster.pdf">Poster (PDF)</a></p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="skills" aria-labelledby="h-skills">
+        <h2 id="h-skills">Skills and credentials</h2>
+        <dl class="facts">
+          <dt>Expertise</dt>
+          <dd>Computer science, machine learning, computational neuroscience, software engineering, research and publication, infrastructure automation, cybersecurity.</dd>
+
+          <dt>Languages</dt>
+          <dd>Python, Go, Java, C, C++, C#, JavaScript, TypeScript, PHP, SQL, Cypher, MATLAB, Octave, sed and awk.</dd>
+
+          <dt>Working with people</dt>
+          <dd>Public speaking, training and speechwriting; written and oral communication; at home in a university environment; quick to pick up new skills.</dd>
+
+          <dt>Certifications</dt>
+          <dd>Associate of ISC2 (CISSP), 2011.</dd>
+          <dd>CompTIA A+, Network+ and Security+, 2009.</dd>
+
+          <dt>Memberships</dt>
+          <dd>IEEE; Society for Neuroscience.</dd>
+
+          <dt>Awards</dt>
+          <dd>NSF Scholarship for Service grant recipient, 2011.</dd>
+        </dl>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2026 Tyler J. Banks</p>
+      <ul>
+        <li><a href="mailto:tyler@tylerbanks.net">Email</a></li>
+        <li><a href="https://github.com/tjbanks">GitHub</a></li>
+        <li><a href="/assets/Tyler_Banks_CV_Latest.pdf">CV (PDF)</a></li>
+        <li><a href="/projects/">Earlier projects</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="/assets/site.js" defer></script>
+  <script src="/assets/neuron.js" defer></script>
+</body>
+</html>
