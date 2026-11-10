@@ -76,11 +76,11 @@
       <figure class="trace">
         <canvas id="trace" role="img" aria-label="Simulated membrane voltage of a fast-spiking interneuron firing a burst of spikes on each cycle of an 8 hertz rhythm, with the injected current drawn beneath it. The controls below change the current and the rhythm."></canvas>
         <figcaption class="wrap">
-          <p>The fast-spiking interneuron from my <a href="https://github.com/tjbanks/AmygdalaTheta">amygdala theta model</a>, simulated in your browser as you read. Its input is a current that rises and falls at 8 Hz, the theta frequency of the basal forebrain input in that model. Change the current or the rhythm, or press and hold the trace for a burst.</p>
+          <p>The fast-spiking interneuron from my <a href="https://github.com/tjbanks/AmygdalaTheta">amygdala theta model</a>, simulated in your browser and played about nine times slower than real time so each spike can be seen. Its input is a current that rises and falls at 8 Hz, the theta frequency of the basal forebrain input in that model. Change the current or the rhythm, or press and hold the trace for a burst.</p>
           <div class="trace-controls">
             <label class="dial"><span>Current</span><input type="range" id="trace-current" min="-0.1" max="0.6" step="0.01" value="0.15"><output id="trace-current-out" for="trace-current">0.15 nA</output></label>
-            <label class="dial"><span>Rhythm</span><input type="range" id="trace-theta" min="4" max="12" step="0.5" value="8"><output id="trace-theta-out" for="trace-theta">8 Hz</output></label>
-            <p class="trace-rate"><output id="trace-rate" for="trace-current trace-theta">0</output> spikes per second</p>
+            <label class="dial"><span>Rhythm</span><input type="range" id="trace-theta" min="0" max="12" step="0.5" value="8"><output id="trace-theta-out" for="trace-theta">8 Hz</output></label>
+            <p class="trace-rate"><output id="trace-rate" for="trace-current trace-theta">29</output> spikes per second of model time</p>
             <button type="button" id="trace-listen" aria-pressed="false">Listen</button>
             <button type="button" id="trace-pause" aria-pressed="false">Pause</button>
           </div>

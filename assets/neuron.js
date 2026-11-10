@@ -135,8 +135,59 @@
     return { step: step, soma: soma, dend: dend, dt: dt, gAxial: gAxial };
   }
 
+  /*
+   * rateCounter({ bias, amplitude, hz })
+   * Measures spikes per second of model time when the soma receives
+   * bias + amplitude * sin(2 pi hz t) nanoamps. It runs its own copy of the
+   * cell for about twelve seconds of model time, in whole cycles of the rhythm,
+   * after a short warm-up. hz = 0 means a steady current, which makes the
+   * result a point on the cell's F-I curve.
+   *
+   * The work is cut into pieces so a page can spread it over several frames:
+   * call run(modelMs) until it returns true, then read rate().
+   */
+  function rateCounter(drive) {
+    var dt = 0.025, seed = 20261110;
+    var cell = createCell({
+      dt: dt,
+      random: function () {
+        seed = (seed * 48271) % 2147483647;
+        return seed / 2147483647;
+      }
+    });
+    var hz = drive.hz > 0 ? drive.hz : 0;
+    var amplitude = hz > 0 ? drive.amplitude || 0 : 0;
+    var period = hz > 0 ? 1000 / hz : 1000;
+    var warmUp = Math.ceil(250 / period) * period;
+    var counted = Math.ceil(12000 / period) * period;
+    var omega = (2 * PI * hz) / 1000;
+    var steps = Math.round((warmUp + counted) / dt), firstCounted = Math.round(warmUp / dt);
+    var i = 0, spikes = 0, above = false;
+    return {
+      run: function (modelMs) {
+        var stop = Math.min(steps, i + Math.round(modelMs / dt));
+        for (; i < stop; i++) {
+          var v = cell.step(drive.bias + amplitude * Math.sin(omega * i * dt));
+          if (v > 0 && !above) {
+            above = true;
+            if (i >= firstCounted) spikes++;
+          } else if (v < -20) {
+            above = false;
+          }
+        }
+        return i >= steps;
+      },
+      rate: function () { return (spikes * 1000) / counted; }
+    };
+  }
+  function meanFiringRate(drive) {
+    var counter = rateCounter(drive);
+    while (!counter.run(1000)) { /* keep going */ }
+    return counter.rate();
+  }
+
   if (typeof module !== "undefined" && module.exports) {
-    module.exports = { createCell: createCell };
+    module.exports = { createCell: createCell, meanFiringRate: meanFiringRate };
   }
   if (typeof document === "undefined") return;
 
@@ -172,7 +223,7 @@
 
   var cell = createCell({ dt: DT, random: rand });
   var t = 0, phase = 0, holding = false, boostLevel = 0;
-  var spikeTimes = [], aboveThreshold = false, onSpike = null;
+  var aboveThreshold = false, onSpike = null;
 
   function stepSample() {
     var I = 0, v = 0;
@@ -182,13 +233,13 @@
       // Accumulate phase so changing the rhythm never makes the sine jump.
       phase += (2 * PI * thetaHz * DT) / 1000;
       if (phase > 2 * PI) phase -= 2 * PI;
-      I = bias + THETA_AMP * Math.sin(phase) + boostLevel;
+      // With the rhythm off the current is steady.
+      I = bias + (thetaHz > 0 ? THETA_AMP * Math.sin(phase) : 0) + boostLevel;
       v = cell.step(I);
       t += DT;
       // A spike is the soma crossing 0 mV on the way up.
       if (v > 0 && !aboveThreshold) {
         aboveThreshold = true;
-        spikeTimes.push(t);
         if (onSpike) onSpike();
       } else if (v < -20) {
         aboveThreshold = false;
@@ -197,18 +248,23 @@
     push(v, I);
   }
 
-  // Firing rate over the last few whole theta cycles (at least 375 ms), so the
-  // number does not wobble with where in the cycle the window happens to end.
-  function firingRate() {
-    var period = 1000 / thetaHz;
-    var windowMs = Math.ceil(375 / period) * period;
-    while (spikeTimes.length && spikeTimes[0] < t - 2000) spikeTimes.shift();
-    var n = 0;
-    for (var i = spikeTimes.length - 1; i >= 0 && spikeTimes[i] > t - windowMs; i--) n++;
-    return (n * 1000) / windowMs;
-  }
+  // The number beside the sliders is the mean rate for the current settings,
+  // measured by rateCounter over about twelve seconds of model time. Counting
+  // the spikes on screen instead gave a number that jumped around: the trace
+  // plays about nine times slower than real time, so only a few hundred
+  // milliseconds are ever in view. The measurement runs in short slices between
+  // frames so the trace never stutters, and restarts if a slider moves again.
+  var rateTimer = 0;
   function showRate() {
-    if (rateOut) rateOut.textContent = String(Math.round(firingRate()));
+    if (!rateOut) return;
+    clearTimeout(rateTimer);
+    var counter = null;
+    function slice() {
+      if (!counter) counter = rateCounter({ bias: bias, amplitude: THETA_AMP, hz: thetaHz });
+      if (counter.run(400)) rateOut.textContent = String(Math.round(counter.rate()));
+      else rateTimer = setTimeout(slice, 0);
+    }
+    rateTimer = setTimeout(slice, 120);
   }
 
   // --- sample buffer (ring) ----------------------------------------------
@@ -348,7 +404,6 @@
 
   // --- loop ----------------------------------------------------------------
   var running = false, userPaused = false, visible = true, raf = 0, last = 0, carry = 0;
-  var rateShownAt = 0;
 
   function frame(now) {
     raf = 0;
@@ -368,10 +423,6 @@
     for (index = 0; index < steps; index++) stepSample();
     onSpike = null;
     draw();
-    if (now - rateShownAt > 250) {
-      rateShownAt = now;
-      showRate();
-    }
     raf = requestAnimationFrame(frame);
   }
   function sync() {
@@ -393,7 +444,6 @@
     if (running) return;
     fill();
     draw();
-    showRate();
   }
 
   // --- controls --------------------------------------------------------------
@@ -404,7 +454,7 @@
     }
     if (thetaInput) {
       thetaHz = parseFloat(thetaInput.value);
-      if (thetaOut) thetaOut.textContent = thetaHz + " Hz";
+      if (thetaOut) thetaOut.textContent = thetaHz > 0 ? thetaHz + " Hz" : "off";
     }
   }
   [currentInput, thetaInput].forEach(function (input) {
@@ -412,6 +462,7 @@
     input.addEventListener("input", function () {
       readControls();
       refreshIfStill();
+      showRate();
     });
   });
   readControls();
