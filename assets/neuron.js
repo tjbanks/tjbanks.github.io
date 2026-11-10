@@ -277,8 +277,8 @@
     }
     ctx.stroke();
 
-    // Scale bars, as on a recording figure. They sit on a patch of paper so the
-    // trace passing behind never tangles with the labels.
+    // Scale bars, as on a recording figure. They sit on a framed patch of paper
+    // so the trace passing behind never tangles with the labels.
     var barMs = W < 600 ? 50 : 100;
     var barH = (40 / (V_MAX - V_MIN)) * (vBottom - vTop);
     var barW = barMs * PX_PER_MS;
@@ -290,6 +290,9 @@
     var boxY = vTop;
     ctx.fillStyle = colors.paper;
     ctx.fillRect(boxX, boxY, boxW, boxH);
+    ctx.strokeStyle = colors.rule;
+    ctx.lineWidth = 1;
+    ctx.strokeRect(Math.round(boxX) + 0.5, Math.round(boxY) + 0.5, Math.round(boxW), Math.round(boxH));
     var bx = boxX + padX;
     var by = boxY + 8 + barH;
     ctx.strokeStyle = colors.soft;

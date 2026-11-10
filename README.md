@@ -12,6 +12,7 @@ straight from `main`. There is no build step and no theme (`.nojekyll` turns Jek
 | `assets/site.css` | All styling; colours and fonts are variables at the top |
 | `assets/neuron.js` | The neuron behind the trace in the header: the PV interneuron from [AmygdalaTheta](https://github.com/tjbanks/AmygdalaTheta), ported from NEURON |
 | `tools/validate-neuron.js` | Checks that port against the cell's saved NEURON profile (`node tools/validate-neuron.js`) |
+| `assets/tissue-mask.webp`, `assets/tissue-outline.svg` | The segmentation figure in the Techcyte entry: the tissue as a transparency mask (so it takes the theme colour) and the outline as vector paths |
 | `assets/site.js` | Light/dark toggle and the current-section mark in the navigation |
 | `assets/*.pdf` | The CV, papers and posters. Published links point here, so do not rename them |
 | `projects/*/`, `teaching/`, `publications/`, `about/`, `pages/` | Redirects from the old site's addresses |

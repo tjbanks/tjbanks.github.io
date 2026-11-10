@@ -42,3 +42,27 @@
     if (el) observer.observe(el);
   });
 })();
+
+/* The segmentation figure: draw the outline once when it scrolls into view. */
+(function () {
+  "use strict";
+  var figure = document.getElementById("slide");
+  if (!figure || !("IntersectionObserver" in window)) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var replay = document.getElementById("slide-replay");
+
+  figure.classList.add("is-armed");
+  function trace() {
+    figure.classList.remove("is-traced");
+    void figure.offsetWidth; // restart the transition
+    figure.classList.add("is-traced");
+  }
+  var observer = new IntersectionObserver(function (entries) {
+    if (!entries[0].isIntersecting) return;
+    observer.disconnect();
+    trace();
+    if (replay) replay.hidden = false;
+  }, { threshold: 0.5 });
+  observer.observe(figure);
+  if (replay) replay.addEventListener("click", trace);
+})();

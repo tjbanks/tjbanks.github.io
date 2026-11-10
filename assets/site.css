@@ -690,3 +690,66 @@ main {
 .pub .entry-body > .pub-links {
   margin-top: 0.35rem;
 }
+
+/* ------------------------------------------ tissue segmentation figure */
+
+/* The tissue is an alpha mask filled with the page's stain colour, so it
+   follows the theme; the outline is drawn over it as a dash that runs out. */
+.slide {
+  max-width: 27rem;
+  margin-top: 1.75rem;
+}
+.slide-frame {
+  position: relative;
+  aspect-ratio: 830 / 812;
+}
+.slide-tissue {
+  position: absolute;
+  inset: 0;
+  background: var(--stain);
+  -webkit-mask: url("tissue-mask.webp") center / 100% 100% no-repeat;
+  mask: url("tissue-mask.webp") center / 100% 100% no-repeat;
+}
+.slide-outline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.slide-outline use {
+  fill: none;
+  stroke: var(--eosin);
+  stroke-width: 3.2;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+.slide.is-armed .slide-outline use {
+  stroke-dashoffset: 1;
+}
+.slide.is-armed.is-traced .slide-outline use {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 3.2s cubic-bezier(0.45, 0, 0.2, 1);
+}
+.slide figcaption {
+  margin-top: 0.75rem;
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+}
+.link-button {
+  padding: 0;
+  font: inherit;
+  color: var(--stain);
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.18em;
+  cursor: pointer;
+}
+@media print {
+  .slide {
+    display: none;
+  }
+}
