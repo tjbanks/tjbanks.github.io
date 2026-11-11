@@ -7,7 +7,7 @@ straight from `main`. There is no build step and no theme (`.nojekyll` turns Jek
 
 | File | What it is |
 |---|---|
-| `index.html` | The résumé: experience, education, research, teaching, publications, skills |
+| `index.html` | The résumé: experience, current projects, education, research, teaching, publications, skills |
 | `projects/index.html` | Archive of older projects |
 | `assets/site.css` | All styling; colours and fonts are variables at the top |
 | `assets/neuron.js` | The neuron behind the trace in the header: the PV interneuron from [AmygdalaTheta](https://github.com/tjbanks/AmygdalaTheta), ported from NEURON |
